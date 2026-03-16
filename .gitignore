@@ -93,7 +93,6 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
 # Sveltekit cache directory
 .svelte-kit/
@@ -137,3 +136,24 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Node-RED
+.config.nodes.json
+.config.runtime.json
+.config.users.json
+*_cred.json
+flows_cred.json
+settings.js
+
+# Node-RED credential and session files
+.sessions.json
+context/
+
+# Environment / secrets
+config/credentials.json
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr

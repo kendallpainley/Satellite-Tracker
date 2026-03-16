@@ -27,7 +27,7 @@ User message → Watson Assistant (intent detection)
                         ↓
              Satellite node fetches TLE-based position data
                         ↓
-             Reverse geocode coordinates → readable location
+             Reverse geocode coordinates via OpenStreetMap Nominatim → readable location
                         ↓
              Push to WorldMap / Earth visualization nodes
                         ↓
@@ -54,6 +54,8 @@ The Node-RED flow exposes two HTTP endpoints:
 | `node-red-node-timearray` | `timearray` node (historical/future windows) |
 | `node-red-contrib-3d-earth` | `earth` node (3D globe view) |
 
+> **Note:** Reverse geocoding uses [OpenStreetMap Nominatim](https://nominatim.openstreetmap.org/) — no API key required.
+
 ---
 
 ## Installation
@@ -73,16 +75,16 @@ Start Node-RED, open the editor at `http://localhost:1880`, then go to **Menu �
 ### 3. Import the flow
 
 1. Open **Menu → Import**
-2. Click **select a file to import** and choose `satellite-tracker.json`
+2. Click **select a file to import** and choose `flows/satellite-tracker.json`
 3. Click **Import**
 
 ### 4. Configure Watson Assistant
 
 1. Create a **Watson Assistant** service on [IBM Cloud](https://cloud.ibm.com/)
 2. Create an assistant and note your:
-    - **API Key**
-    - **Service URL**
-    - **Assistant ID**
+   - **API Key**
+   - **Service URL**
+   - **Assistant ID**
 3. In the Node-RED editor, double-click the **ISS Assistant** node and enter your credentials
 4. In Watson Assistant, create a skill with the following intents:
 
@@ -97,7 +99,7 @@ Start Node-RED, open the editor at `http://localhost:1880`, then go to **Menu �
 
 ### 5. Deploy
 
-Click the **Deploy** button in Node-RED. The app is now live.
+Click the **Deploy** button in Node-RED. The app is now live at `http://localhost:1880/bot`.
 
 ---
 
@@ -106,13 +108,15 @@ Click the **Deploy** button in Node-RED. The app is now live.
 ```
 Satellite-Tracker/
 ├── flows/
-│   └── satellite-tracker.json
+│   └── satellite-tracker.json   # Node-RED flow (import this into your editor)
 ├── config/
-│   └── credentials.example.json
+│   └── credentials.example.json # Placeholder showing required credentials
 ├── docs/
 ├── README.md
 └── .gitignore
 ```
+
+---
 
 ## Technologies
 
@@ -122,6 +126,6 @@ Satellite-Tracker/
 | [IBM Watson Assistant v2](https://www.ibm.com/cloud/watson-assistant) | Natural language understanding |
 | [node-red-contrib-web-worldmap](https://flows.nodered.org/node/node-red-contrib-web-worldmap) | 2D interactive map with ISS tracking |
 | [node-red-node-satellite](https://flows.nodered.org/node/node-red-node-satellite) | TLE-based satellite position calculation |
+| [OpenStreetMap Nominatim](https://nominatim.openstreetmap.org/) | Free reverse geocoding (no API key needed) |
 | Bootstrap 3 + jQuery | Chat UI frontend |
 | Leaflet (via WorldMap node) | Underlying map renderer |
-

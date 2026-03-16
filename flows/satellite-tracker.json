@@ -144,14 +144,21 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "msg.mydata = msg.payload;  msg.lat = msg.payload.position.lat; msg.lon = msg.payload.position.lon;",
+        "url": "https://nominatim.openstreetmap.org/reverse?format=json&lat={{{msg.lat}}}&lon={{{msg.lon}}}",
         "tls": "",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
         "authType": "",
         "senderr": false,
-        "headers": [],
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "User-Agent",
+                "valueType": "other",
+                "valueValue": "iss-satellite-tracker/1.0"
+            }
+        ],
         "x": 700,
         "y": 220,
         "wires": [

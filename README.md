@@ -104,15 +104,15 @@ Click the **Deploy** button in Node-RED. The app is now live.
 ## Project Structure
 
 ```
-satellite-tracker/
-├── satellite-tracker.json   # Node-RED flow (import this into your editor)
-├── image/
-│   └── Satellite_Tracker_.png  # Flow diagram screenshot
-├── .gitignore
-└── README.md
+Satellite-Tracker/
+├── flows/
+│   └── satellite-tracker.json
+├── config/
+│   └── credentials.example.json
+├── docs/
+├── README.md
+└── .gitignore
 ```
-
----
 
 ## Technologies
 
